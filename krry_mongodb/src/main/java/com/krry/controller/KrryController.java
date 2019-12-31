@@ -49,7 +49,7 @@ public class KrryController {
 
 
     /**
-     * 点击登录哈
+     * 点击登录
      * com.krry.controller.login
      * 方法名：login
      *
