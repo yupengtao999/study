@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="krry_mongodb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="krry_mongodb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="krry_mongodb:war exploded" />
+    </root>
+  </artifact>
+</component>
