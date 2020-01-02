@@ -1,9 +1,9 @@
 package com.krry.dao;
 
-import java.util.List;
-
 import com.krry.entity.User;
 import com.mongodb.WriteResult;
+
+import java.util.List;
 
 /**
  * 
@@ -13,9 +13,9 @@ public interface IUserDao {
 	
     /**
      * 添加
-     * @param User
+     * @param user
      */
-    public void addUser(User User);
+    public void addUser(User user);
 
 
     /**
@@ -41,7 +41,7 @@ public interface IUserDao {
     
     /**
      * 根据用户名查询
-     * @param id
+     * @param username
      * @return
      */
     public User findByUsername(String username);
@@ -62,5 +62,10 @@ public interface IUserDao {
      * 修改
      */
     public boolean update(String username);
+
+    /**
+     * 登录日志
+     */
+    public void save(User user);
 }
 

@@ -63,7 +63,7 @@ public class KrryController {
      * @since 1.0.0
      */
     @RequestMapping(method = RequestMethod.POST, value = "/logined")
-    public String login(HttpServletRequest request) {
+    public String logined(HttpServletRequest request) {
         //获取用户和密码
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -87,12 +87,12 @@ public class KrryController {
                 return "redirect:index";
             } else {
                 //如果密码错误
-                System.out.println("密码错误");
+                LOGGER.error("密码错误");
                 return "index/error";
             }
         } else {
             //如果不存在，代码邮箱和密码输入有误
-            System.out.println("用户不存在");
+            LOGGER.error("用户不存在");
             return "index/error";
         }
     }

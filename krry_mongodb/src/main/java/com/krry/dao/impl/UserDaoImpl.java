@@ -22,10 +22,10 @@ public class UserDaoImpl implements IUserDao {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void addUser(User User) {
+    public void addUser(User user) {
         //1.如果没有指定集合，则默认添加到和对象名称相同的集合中，没有则创建一个
         //2.也可以指定集合 mongoTemplate.save(User, "User_db");
-        mongoTemplate.save(User);
+        mongoTemplate.save(user);
     }
 
     public void removeUser(String id) {
@@ -70,6 +70,10 @@ public class UserDaoImpl implements IUserDao {
 	        return true;
         }
         return false;
+    }
+
+    public void save(User user) {
+        mongoTemplate.save(user,"logger");
     }
 }
 

@@ -122,7 +122,7 @@ public class TmStringUtils {
 	/**
 	 * 邮箱验证 方法名：isEmail 创建人：xuchengfei 时间：2014年6月6日-下午3:14:46
 	 * 
-	 * @param str
+	 * @param email
 	 * @return boolean
 	 * @exception
 	 * @since 1.0.0
@@ -180,7 +180,7 @@ public class TmStringUtils {
 	/**
 	 * 判断字符串是否都是英文字母组成
 	 * 
-	 * @param numString
+	 * @param string
 	 * @return
 	 */
 	public static boolean isEnglish(String string) {
@@ -190,7 +190,7 @@ public class TmStringUtils {
 	/**
 	 * 判断字符串是否都是英文字母和数字组成
 	 * 
-	 * @param numString
+	 * @param numEnglishString
 	 * @return
 	 */
 	public static boolean isEnglishOrNumber(String numEnglishString) {

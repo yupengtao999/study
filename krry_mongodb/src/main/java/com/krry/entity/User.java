@@ -1,5 +1,7 @@
 package com.krry.entity;
 
+import java.util.Arrays;
+
 /**
  * @Document(collection = "user")这个注解和Hibernate的注解Entiry非常相似，
  * 就是定义一个文档，对象MongoDB存储的Collection（表）的名称是user
@@ -27,17 +29,36 @@ public class User {
 
 	private String level;
 	private String[] tags;
+	private String ip;
+	private String result;
 
 	@Override
 	public String toString() {
 		return "User{" +
-//				"id='" + id + '\'' +
-				", username='" + username + '\'' +
+				"username='" + username + '\'' +
 				", password='" + password + '\'' +
 				", createTime='" + createTime + '\'' +
 				", level='" + level + '\'' +
-				", tags=" + tags +
+				", tags=" + Arrays.toString(tags) +
+				", ip='" + ip + '\'' +
+				", result='" + result + '\'' +
 				'}';
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 	public String[] getTags() {
