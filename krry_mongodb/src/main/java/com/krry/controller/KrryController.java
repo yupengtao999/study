@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +27,7 @@ public class KrryController {
     private IUserDao userDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KrryController.class);
+
     /**
      * 进入首页
      *
@@ -182,79 +182,79 @@ public class KrryController {
     /**
      * 查询所有
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/query")
-    public String query(HttpServletRequest request, HttpSession session) {
-        List<User> result = userDao.findAll();
-//        String[] tags = result.get(6).getTags();
-//        for (int i=0;i<tags.length;i++){
-//            System.out.println(tags[i]);
-//        }
-        System.out.println(result);
-//        //获取客户端向服务器端传送数据的协议名称
-//        System.out.println("rotocol: " + request.getProtocol());
-//
-//        //返回的协议名称.默认是http
-//        System.out.println("Scheme: " + request.getScheme());
-//        //可以返回当前页面所在的服务器的名字;如果你的应用部署在本机那么其就返回localhost或者127.0.0.1 ，这两个是等价的
-//        System.out.println("Server Name: " + request.getServerName());
-//
-//        //可以返回当前页面所在的服务器使用的端口,默认就是8080
-//        System.out.println("Server Port: " + request.getServerPort());
-//        //request.getRemoteAddr()是获得客户端的ip地址
-//        System.out.println("Remote Addr: " + request.getRemoteAddr());
-//
-//        //request.getRemoteHost()是获得客户端的主机名。
-//        System.out.println("Remote Host: " + request.getRemoteHost());
-//
-//        //返回字符编码
-//        System.out.println("Character Encoding: " + request.getCharacterEncoding());
-//
-//        System.out.println("Content Length: " + request.getContentLength());
-//
-//        //定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件，
-//        System.out.println("Content Type: " + request.getContentType());
-//
-//        //如果servlet由一个鉴定方案所保护，如HTTP基本鉴定，则返回方案名称
-//        System.out.println("Auth Type: " + request.getAuthType());
-//
-//        //返回HTTP请求方法（例如GET、POST等等）
-//        System.out.println("HTTP Method: " + request.getMethod());
-//
-//        //返回在URL中指定的任意附加路径信息。
-//        System.out.println("path Info: " + request.getPathInfo());
-//
-//        //返回在URL中指定的任意附加路径信息，被子转换成一个实际路径
-//        System.out.println("path Trans: " + request.getPathTranslated());
-//
-//        //返回查询字符串，即URL中?后面的部份。
-//        System.out.println("Query String: " + request.getQueryString());
-//
-//        //如果用户通过鉴定，返回远程用户名，否则为null。
-//        System.out.println("Remote User: " + request.getRemoteUser());
-//
-//        //返回客户端的会话ID
-//        System.out.println("Session Id: " + request.getRequestedSessionId());
-//
-//        //返回URL中一部分，从“/”开始，包括上下文，但不包括任意查询字符串。
-//        System.out.println("Request URI: " + request.getRequestURI());
-//
-//        //返回请求URI上下文后的子串
-//        System.out.println("Servlet Path: " + request.getServletPath());
-//
-//        //返回指定的HTTP头标指。如果其由请求给出，则名字应为大小写不敏感。
-//        System.out.println("Accept: " + request.getHeader("Accept"));
-//        System.out.println("Host: " + request.getHeader("Host"));
-//        System.out.println("Referer : " + request.getHeader("Referer"));
-//        System.out.println("Accept-Language : " + request.getHeader("Accept-Language"));
-//        System.out.println("Accept-Encoding : " + request.getHeader("Accept-Encoding"));
-//        System.out.println("User-Agent : " + request.getHeader("User-Agent"));
-//        System.out.println("Connection : " + request.getHeader("Connection"));
-//        System.out.println("Cookie : " + request.getHeader("Cookie"));
-//        System.out.println("X-Requested-With : " + request.getHeader("X-Requested-With"));
-//        System.out.println("Created : " + session.getCreationTime());
-//        System.out.println("LastAccessed : " + session.getLastAccessedTime());
-        return "index/index";
-    }
+//    @RequestMapping(method = RequestMethod.POST, value = "/query")
+//    public String query(HttpServletRequest request, HttpSession session) {
+//        List<User> result = userDao.findAll();
+////        String[] tags = result.get(6).getTags();
+////        for (int i=0;i<tags.length;i++){
+////            System.out.println(tags[i]);
+////        }
+//        System.out.println(result);
+////        //获取客户端向服务器端传送数据的协议名称
+////        System.out.println("rotocol: " + request.getProtocol());
+////
+////        //返回的协议名称.默认是http
+////        System.out.println("Scheme: " + request.getScheme());
+////        //可以返回当前页面所在的服务器的名字;如果你的应用部署在本机那么其就返回localhost或者127.0.0.1 ，这两个是等价的
+////        System.out.println("Server Name: " + request.getServerName());
+////
+////        //可以返回当前页面所在的服务器使用的端口,默认就是8080
+////        System.out.println("Server Port: " + request.getServerPort());
+////        //request.getRemoteAddr()是获得客户端的ip地址
+////        System.out.println("Remote Addr: " + request.getRemoteAddr());
+////
+////        //request.getRemoteHost()是获得客户端的主机名。
+////        System.out.println("Remote Host: " + request.getRemoteHost());
+////
+////        //返回字符编码
+////        System.out.println("Character Encoding: " + request.getCharacterEncoding());
+////
+////        System.out.println("Content Length: " + request.getContentLength());
+////
+////        //定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件，
+////        System.out.println("Content Type: " + request.getContentType());
+////
+////        //如果servlet由一个鉴定方案所保护，如HTTP基本鉴定，则返回方案名称
+////        System.out.println("Auth Type: " + request.getAuthType());
+////
+////        //返回HTTP请求方法（例如GET、POST等等）
+////        System.out.println("HTTP Method: " + request.getMethod());
+////
+////        //返回在URL中指定的任意附加路径信息。
+////        System.out.println("path Info: " + request.getPathInfo());
+////
+////        //返回在URL中指定的任意附加路径信息，被子转换成一个实际路径
+////        System.out.println("path Trans: " + request.getPathTranslated());
+////
+////        //返回查询字符串，即URL中?后面的部份。
+////        System.out.println("Query String: " + request.getQueryString());
+////
+////        //如果用户通过鉴定，返回远程用户名，否则为null。
+////        System.out.println("Remote User: " + request.getRemoteUser());
+////
+////        //返回客户端的会话ID
+////        System.out.println("Session Id: " + request.getRequestedSessionId());
+////
+////        //返回URL中一部分，从“/”开始，包括上下文，但不包括任意查询字符串。
+////        System.out.println("Request URI: " + request.getRequestURI());
+////
+////        //返回请求URI上下文后的子串
+////        System.out.println("Servlet Path: " + request.getServletPath());
+////
+////        //返回指定的HTTP头标指。如果其由请求给出，则名字应为大小写不敏感。
+////        System.out.println("Accept: " + request.getHeader("Accept"));
+////        System.out.println("Host: " + request.getHeader("Host"));
+////        System.out.println("Referer : " + request.getHeader("Referer"));
+////        System.out.println("Accept-Language : " + request.getHeader("Accept-Language"));
+////        System.out.println("Accept-Encoding : " + request.getHeader("Accept-Encoding"));
+////        System.out.println("User-Agent : " + request.getHeader("User-Agent"));
+////        System.out.println("Connection : " + request.getHeader("Connection"));
+////        System.out.println("Cookie : " + request.getHeader("Cookie"));
+////        System.out.println("X-Requested-With : " + request.getHeader("X-Requested-With"));
+////        System.out.println("Created : " + session.getCreationTime());
+////        System.out.println("LastAccessed : " + session.getLastAccessedTime());
+//        return "index/index";
+//    }
 
     /**
      * @author: yupt
@@ -265,6 +265,23 @@ public class KrryController {
     public String update(HttpServletRequest request) {
         String username = request.getParameter("user");
         userDao.update(username);
+        return "index/index";
+    }
+
+    //    /**
+//     * @author: yupt
+//     * @date: 2020/1/3 8:58
+//     * Json返回
+//     */
+//    @RequestMapping(method = RequestMethod.POST,value = "/query")
+//    public @ResponseBody JsonResult query(){
+//        List<User> result = userDao.findAll();
+//        return new JsonResult(result);
+//    }
+    @RequestMapping(method = RequestMethod.POST, value = "/query")
+    public String query() {
+        List<User> result = userDao.findAll();
+        System.out.println(result);
         return "index/index";
     }
 }
