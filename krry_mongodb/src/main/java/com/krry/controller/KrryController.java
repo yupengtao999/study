@@ -279,6 +279,11 @@ public class KrryController {
 //        List<User> result = userDao.findAll();
 //        return new JsonResult(result);
 //    }
+
+    /**
+     * 聚合查询
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/query")
     public String query() {
         List<AlarmDetail> result = userDao.select(1,15);
