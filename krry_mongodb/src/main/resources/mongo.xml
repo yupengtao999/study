@@ -2,12 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-       xsi:schemaLocation="http://www.springframework.org/schema/data/mongo
-       http://www.springframework.org/schema/data/mongo/spring-mongo-1.1.xsd
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/data/mongo
+            http://www.springframework.org/schema/data/mongo/spring-mongo-1.8.xsd
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
     <!-- Default bean name is 'mongo' -->
-    <mongo:mongo host="${mongo.host}" port="${mongo.port}"/>
+    <mongo:mongo-client id="mongo" host="${mongo.host}" port="${mongo.port}" credentials="${mongo.credentials}"/>
     <mongo:db-factory dbname="${mongo.dbname}" mongo-ref="mongo"/>
 
     <!-- 自动扫描以下包的类 -->

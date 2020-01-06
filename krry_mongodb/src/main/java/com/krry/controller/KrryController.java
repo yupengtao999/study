@@ -1,6 +1,7 @@
 package com.krry.controller;
 
 import com.krry.dao.IUserDao;
+import com.krry.entity.AlarmDetail;
 import com.krry.entity.User;
 import com.krry.util.TmStringUtils;
 import org.slf4j.Logger;
@@ -280,7 +281,7 @@ public class KrryController {
 //    }
     @RequestMapping(method = RequestMethod.POST, value = "/query")
     public String query() {
-        List<User> result = userDao.findAll();
+        List<AlarmDetail> result = userDao.select(1,15);
         System.out.println(result);
         return "index/index";
     }

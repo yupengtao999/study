@@ -1,17 +1,23 @@
 package com.krry.dao.impl;
 
 import com.krry.dao.IUserDao;
+import com.krry.entity.Alarm;
+import com.krry.entity.AlarmDetail;
 import com.krry.entity.User;
 import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 /**
  * @author
@@ -74,6 +80,23 @@ public class UserDaoImpl implements IUserDao {
 
     public void save(User user) {
         mongoTemplate.save(user,"logger");
+    }
+
+    public List<AlarmDetail> select(Integer page, Integer size) {
+        Criteria c1 = Criteria.where("_id").is("5d1fa50cdd24673fe54f1922");
+        Alarm alarm = mongoTemplate.findOne(Query.query(c1), Alarm.class, "meitainuo_alarm");
+        System.out.println(alarm);
+        Criteria criteria = Criteria.where("operationState").is("交维态");
+        Aggregation agg = Aggregation.newAggregation(
+                match(criteria),
+                project("state","details","tierCode","operationState","siteTier","level"),
+                sort(Sort.Direction.ASC,"level"),
+                skip((page-1)*size),
+                limit(size)
+        );
+            AggregationResults<AlarmDetail> result = mongoTemplate.aggregate(agg,"meitainuo_alarm",AlarmDetail.class);
+            List<AlarmDetail> list = result.getMappedResults();
+        return list;
     }
 }
 

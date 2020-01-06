@@ -1,5 +1,6 @@
 package com.krry.dao;
 
+import com.krry.entity.AlarmDetail;
 import com.krry.entity.User;
 import com.mongodb.WriteResult;
 
@@ -67,5 +68,10 @@ public interface IUserDao {
      * 登录日志
      */
     public void save(User user);
+
+    /**
+     * 聚合查询
+     */
+    public List<AlarmDetail> select(Integer page, Integer size);
 }
 
