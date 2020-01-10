@@ -1,5 +1,6 @@
 package com.krry.entity;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -14,8 +15,9 @@ import java.util.Arrays;
  *
  */
 //@Document(collection = "user")
-public class User {
+public class User implements Serializable{
 
+	private static final long serialVersionUID = -250098600900666239L;
 	//主键
 //	@Id
 	//private String id;

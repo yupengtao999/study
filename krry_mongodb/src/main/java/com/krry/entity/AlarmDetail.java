@@ -17,6 +17,10 @@ public class AlarmDetail implements Serializable{
     private TierInfo[] siteTier;
     private String operationState;
     private String level;
+    private String siteId;
+    private int count;
+    private String time;
+    private FacadeView site;
 
     @Override
     public String toString() {
@@ -27,7 +31,43 @@ public class AlarmDetail implements Serializable{
                 ", siteTier=" + Arrays.toString(siteTier) +
                 ", operationState='" + operationState + '\'' +
                 ", level='" + level + '\'' +
+                ", siteId='" + siteId + '\'' +
+                ", count=" + count +
+                ", time='" + time + '\'' +
+                ", site=" + site +
                 '}';
+    }
+
+    public FacadeView getSite() {
+        return site;
+    }
+
+    public void setSite(FacadeView site) {
+        this.site = site;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(String siteId) {
+        this.siteId = siteId;
     }
 
     public String getLevel() {

@@ -1,7 +1,6 @@
 package com.krry.dao.impl;
 
 import com.krry.dao.IUserDao;
-import com.krry.entity.Alarm;
 import com.krry.entity.AlarmDetail;
 import com.krry.entity.User;
 import com.mongodb.WriteResult;
@@ -83,18 +82,30 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public List<AlarmDetail> select(Integer page, Integer size) {
-        Criteria c1 = Criteria.where("_id").is("5d1fa50cdd24673fe54f1922");
-        Alarm alarm = mongoTemplate.findOne(Query.query(c1), Alarm.class, "meitainuo_alarm");
-        System.out.println(alarm);
         Criteria criteria = Criteria.where("operationState").is("交维态");
         Aggregation agg = Aggregation.newAggregation(
                 match(criteria),
-                project("state","details","tierCode","operationState","siteTier","level"),
-                sort(Sort.Direction.ASC,"level"),
+//                project("state","details","tierCode","operationState","siteTier","level","site")
+//                .andExpression("site.strId"),
+//                group("site").count().as("count").first("operationState").as("state")
+//                        .first("tierCode").as("tierCode"),
+                project("site").andExpression("substr(tReport,0,10)").as("date"),
+                group("site","date").count().as("count"),
+//                project("count").and("site.strId").as("siteId").and("site").as("site"),
+                sort(Sort.Direction.ASC,"count"),
+//                project("count").and("site").previousOperation(),
+                project("count").and("date").as("tierCode"),
                 skip((page-1)*size),
                 limit(size)
         );
-            AggregationResults<AlarmDetail> result = mongoTemplate.aggregate(agg,"meitainuo_alarm",AlarmDetail.class);
+        Aggregation agg1 = Aggregation.newAggregation(
+          match(criteria),
+                project("state","details","tierCode","operationState","siteTier","level","site"),
+                sort(Sort.Direction.ASC,"tierCode"),
+                skip((page-1)*size),
+                limit(size)
+        );
+            AggregationResults<AlarmDetail> result = mongoTemplate.aggregate(agg1,"meitainuo_alarm",AlarmDetail.class);
             List<AlarmDetail> list = result.getMappedResults();
         return list;
     }
